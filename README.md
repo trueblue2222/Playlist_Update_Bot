@@ -8,7 +8,8 @@ discord-music-bot
 ├── bot.py          // 실제 디코봇 기능 구현된 소스코드
 ├── test_bot.py     // 토큰 로드 & 연동 확인용 테스트 소스코드
 ├── .env            // 디코 토큰, 유튜브 계정 API, 플리 ID, 디스코드 서버 ID, 채널 ID 저장 env 파일
-└── requirements.txt // 라이브러리 버전 명시 txt 파일```
+└── requirements.txt // 라이브러리 버전 명시 txt 파일
+```
 
 사용 방법 :
 0. 자신의 디코 계정에서 디코봇을 하나 아무거나 만든다. 권한 설정을 적당히 해준다.
