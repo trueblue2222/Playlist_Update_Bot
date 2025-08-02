@@ -5,9 +5,9 @@ https://discord.com/oauth2/authorize?client_id=1400714065642389524&permissions=3
 파일 구조 :
 ```
 discord-music-bot
-├── bot.py          // 실제 디코봇 기능 구현된 소스코드
-├── test_bot.py     // 토큰 로드 & 연동 확인용 테스트 소스코드
-├── .env            // 디코 토큰, 유튜브 계정 API, 플리 ID, 디스코드 서버 ID, 채널 ID 저장 env 파일
+├── bot.py          // 실제 디코봇 기능 구현된 소스파일
+├── test_bot.py     // 토큰 로드 & 연동 확인용 테스트 소스파일
+├── .env            // 디코 토큰, 유튜브 계정 API, 플리 ID, 디스코드 서버 ID, 채널 ID 저장 .env 파일
 └── requirements.txt // 라이브러리 버전 명시 txt 파일
 ```
 
