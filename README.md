@@ -12,6 +12,7 @@ discord-music-bot
 ```
 
 사용 방법 :
+
 0. 자신의 디코 계정에서 디코봇을 하나 아무거나 만든다. 권한 설정을 적당히 해준다. 그리고 디코봇을 넣어둘 디코 서버도 하나 만들어준다.
 
 1. (중요) .env 파일에 토큰 정보를 정확하게 입력한다. 차례대로 디코봇 토큰, 유튜브 계정 api key, 플리 id, 디코봇이 있는 서버 id, 채널 id이다.
@@ -33,6 +34,10 @@ discord-music-bot
 4. 디코봇을 넣어둔 디코 서버로 가서 이것저것 해본다. 주요 명령어는 다음 사진을 참고하자.
    
 <img width="820" height="684" alt="image" src="https://github.com/user-attachments/assets/065232b2-24d2-45a9-ae93-ce9217b2cf7d" />
+<img width="1086" height="618" alt="image" src="https://github.com/user-attachments/assets/8861f497-00ff-4c0b-aa73-aae75a89cbfb" />
+<img width="832" height="498" alt="image" src="https://github.com/user-attachments/assets/7f1ebcdb-7448-494f-bdf4-68b799a54663" />
+
+
 
 원래는 내 디스코드 프로필을 내 유튜브 계정의 플레이리스트와 연동하여 그 중 노래 하나를 하루마다 자동으로 선택해서 '내 소개' 란에 하나 적어두는 디코봇을 만들고 싶었다. 근데 이런 디코봇은 사용자 계정처럼 행동하는 '셀프봇'이라고 한다. 디코봇이 실제 사용하고 있는 사용자의 계정에 접근하는 것은 Discord 이용약관에 위반된다고 한다. 이런 디코봇을 만들면 계정이 정지된다고 한다. 아쉽지만 내가 원래 계획한 기능을 지금 당장 만드는 것은 어려울 것 같다고 생각하여 그냥 유튜브 계정 연동 및 디코 내에서 음악을 틀어줄 수 있는 디코봇을 만들어보았다. 물론 내가 코드를 하나하나 짠 건 아니고 Claude AI와의 긴밀한 협업을 통해 만든 것이다..
 
