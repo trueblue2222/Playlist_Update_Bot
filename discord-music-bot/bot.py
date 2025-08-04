@@ -86,6 +86,35 @@ class MusicBot:
             print(f"YouTube API 오류: {e}")
             return []
     
+    def get_playlist_info(self):
+        """재생목록 정보 가져오기 (제목, 설명 등)"""
+        try:
+            url = "https://www.googleapis.com/youtube/v3/playlists"
+            params = {
+                'part': 'snippet,contentDetails',
+                'id': PLAYLIST_ID,
+                'key': YOUTUBE_API_KEY
+            }
+            
+            response = requests.get(url, params=params)
+            data = response.json()
+            
+            if 'items' in data and len(data['items']) > 0:
+                playlist = data['items'][0]
+                return {
+                    'title': playlist['snippet']['title'],
+                    'description': playlist['snippet'].get('description', ''),
+                    'channel_title': playlist['snippet']['channelTitle'],
+                    'song_count': playlist['contentDetails']['itemCount'],
+                    'url': f"https://www.youtube.com/playlist?list={PLAYLIST_ID}"
+                }
+            else:
+                return None
+                
+        except Exception as e:
+            print(f"재생목록 정보 가져오기 오류: {e}")
+            return None
+    
     def select_random_song(self, songs):
         """중복되지 않게 랜덤 곡 선택"""
         if len(self.songs_history) >= len(songs) * 0.8:
@@ -246,6 +275,38 @@ async def playlist_info(ctx, page: int = 1):
     embed.set_footer(text="💡 곡 제목을 클릭하면 YouTube에서 바로 들을 수 있어요!")
     await ctx.send(embed=embed)
 
+@bot.command(name='플리', aliases=['플레이리스트'])
+async def playlist_link(ctx):
+    """연동된 재생목록으로 바로가기"""
+    playlist_info = music_bot.get_playlist_info()
+    
+    if not playlist_info:
+        await ctx.send("❌ 재생목록 정보를 불러올 수 없습니다.")
+        return
+    
+    embed = discord.Embed(
+        title="🎵 연동된 YouTube 재생목록",
+        description=f"**[{playlist_info['title']}]({playlist_info['url']})**",
+        color=0xFF0000  # YouTube 레드 컬러
+    )
+    
+    # 재생목록 정보 표시
+    embed.add_field(name="📺 채널", value=playlist_info['channel_title'], inline=True)
+    embed.add_field(name="🎵 곡 수", value=f"{playlist_info['song_count']}곡", inline=True)
+    embed.add_field(name="🔗 링크", value=f"[YouTube에서 보기]({playlist_info['url']})", inline=False)
+    
+    # 설명이 있으면 추가 (너무 길면 자르기)
+    if playlist_info['description']:
+        description = playlist_info['description']
+        if len(description) > 200:
+            description = description[:197] + "..."
+        embed.add_field(name="📝 설명", value=description, inline=False)
+    
+    embed.set_thumbnail(url="https://img.icons8.com/color/96/000000/youtube-play.png")
+    embed.set_footer(text="💡 제목을 클릭하면 YouTube 재생목록으로 바로 이동해요!")
+    
+    await ctx.send(embed=embed)
+
 @bot.command(name='검색')
 async def search_song(ctx, *, query):
     """재생목록에서 곡 검색"""
@@ -350,6 +411,7 @@ async def help_command(ctx):
     commands_list = [
         "`!오늘의곡` - 오늘의 랜덤 곡 추천",
         "`!재생목록 [페이지]` - 전체 재생목록 보기",
+        "`!플리` 또는 `!플레이리스트` - 연동된 재생목록으로 바로가기 ✨**NEW**",
         "`!검색 <곡명/가수명>` - 재생목록에서 곡 검색",  
         "`!랜덤 [개수]` - 랜덤으로 몇 곡 추천 (기본 5곡)",
         "`!히스토리` - 최근 재생된 곡들",
@@ -357,7 +419,7 @@ async def help_command(ctx):
     ]
     
     embed.add_field(name="📋 명령어 목록", value="\n".join(commands_list), inline=False)
-    embed.add_field(name="💡 팁", value="• 곡 제목을 클릭하면 YouTube에서 바로 재생됩니다!\n• 봇 닉네임에서 현재 추천곡을 확인할 수 있어요", inline=False)
+    embed.add_field(name="💡 팁", value="• 곡 제목을 클릭하면 YouTube에서 바로 재생됩니다!\n• 봇 닉네임에서 현재 추천곡을 확인할 수 있어요\n• `!플리` 명령어로 전체 재생목록을 한번에 볼 수 있어요!", inline=False)
     embed.set_footer(text="매일 자동으로 새로운 곡이 추천됩니다! 🎶")
     
     await ctx.send(embed=embed)
