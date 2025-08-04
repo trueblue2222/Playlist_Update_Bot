@@ -39,11 +39,17 @@ GUILD_ID=여기에디스코드서버ID입력
 
 <img width="1744" height="344" alt="image" src="https://github.com/user-attachments/assets/81316d4b-3253-436a-afbb-f57437d01cbc" />
 
-4. 디코봇을 넣어둔 디코 서버로 가서 이것저것 해본다. 주요 명령어는 다음 사진을 참고하자.
-   
-<img width="820" height="684" alt="image" src="https://github.com/user-attachments/assets/065232b2-24d2-45a9-ae93-ce9217b2cf7d" />
+4. 디코봇을 넣어둔 디코 서버로 가서 이것저것 해본다. 주요 명령어는 다음 사진을 참고하자. (8/4 수정 : 연동된 유튜브 재생목록 바로가기 링크 기능 추가)
+
+<img width="1074" height="768" alt="image" src="https://github.com/user-attachments/assets/d68d6259-c14e-4c02-a416-428c31889d7e" />
+
 <img width="1086" height="618" alt="image" src="https://github.com/user-attachments/assets/8861f497-00ff-4c0b-aa73-aae75a89cbfb" />
 <img width="832" height="498" alt="image" src="https://github.com/user-attachments/assets/7f1ebcdb-7448-494f-bdf4-68b799a54663" />
+
+
+
+
+
 
 
 
